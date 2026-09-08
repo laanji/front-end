@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="uk">    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="keywords" content="Таблиці HTML5, CSS трансформації, позиціонування, КПІ, ФІОТ">
+        <meta name="description" content="Основи Front-end технологій. Лабораторна робота №2">
+        <title>Друченко О.С. ІК-41</title>
+        <link rel="stylesheet" href="style.css">
+        <style>
+            .task-table {
+                border-collapse: collapse;
+                width: 100%;
+                max-width: 900px;
+                margin: 20px 0 40px 0;
+                font-family: Arial, sans-serif;
+                text-align: center;
+            }
+
+            .task-table td {
+                border: 2px solid #333;
+                padding: 15px;
+                font-weight: bold;
+                transition: background-color 0.3s ease, color 0.3s ease;
+            }
+
+            .task-table tr:nth-child(1) td {
+                background-color: #048f8f;
+                color: #ffffff;
+            }
+
+            .task-table tr:nth-child(2) td {
+                background-color: #f5f504;
+                color: #111111;
+            }
+
+            .task-table tr:nth-child(1):hover td {
+                background-color: #f5f504;
+                color: #111111;
+            }
+
+            .task-table tr:nth-child(2):hover td {
+                background-color: #048f8f;
+                color: #ffffff;
+            }
+
+            .task-table tr:nth-child(3) td {
+                background-color: #f9f9f9;
+                color: #555;
+            }
+    </style>
+    </head>
+    <body>
+        <h2>Завдання 1. Таблиця за варіантом №4</h2>
+        <table class="task-table">
+            <tr>
+                <td>Друченко</td>
+                <td>Олексій</td>
+                <td rowspan="2">Сергійович</td>
+                <td>ФІОТ</td>
+                <td rowspan="2">126 ІСТ</td>
+            </tr>
+            <tr>
+                <td colspan="2">Група ІК-41</td>
+                <td>ЛР №2, Варіант №4</td>
+            </tr>
+            <tr>
+                <td colspan="2">КПІ ім. Ігоря Сікорського</td>
+                <td colspan="3">2026 навчальний рік</td>
+            </tr>
+        </table>
+
+        <hr>
+
+        <h2>Завдання 2. Створення зображення (Варіант 4: Приціл)</h2>
+        
+        <div class="targets-wrapper">
+            <div class="target-card">
+                <h3>1. За допомогою position</h3>
+                <div class="target-position">
+                    <div class="outer-ring"></div>
+                    <div class="inner-circle"></div>
+                    <div class="line-h"></div>
+                    <div class="line-v"></div>
+                </div>
+            </div>
+
+            <div class="target-card">
+                <h3>2. За допомогою transform</h3>
+                <div class="target-transform">
+                    <div class="t-ring"></div>
+                    <div class="t-center"></div>
+                    <div class="t-axis"></div>
+                    <div class="t-axis rotated"></div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

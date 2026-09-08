@@ -1,0 +1,111 @@
+body {
+        font-family: Arial, sans-serif;
+        padding: 30px;
+        background-color: #ffffff;
+        color: #222;
+    }
+
+    .targets-wrapper {
+        display: flex;
+        gap: 60px;
+        margin-top: 20px;
+    }
+
+    .target-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* 1. position */
+    .target-position {
+        position: relative;
+        width: 220px;
+        height: 220px;
+        margin: 20px;
+    }
+
+    .target-position .outer-ring {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        width: 140px;
+        height: 140px;
+        border: 20px solid #000000;
+        border-radius: 50%;
+        box-sizing: content-box;
+    }
+
+    .target-position .inner-circle {
+        position: absolute;
+        top: 75px;
+        left: 75px;
+        width: 70px;
+        height: 70px;
+        background-color: #000000;
+        border-radius: 50%;
+    }
+
+    .target-position .line-h {
+        position: absolute;
+        top: 106px;
+        left: 0;
+        width: 220px;
+        height: 8px;
+        background-color: #000000;
+    }
+
+    .target-position .line-v {
+        position: absolute;
+        top: 0;
+        left: 106px;
+        width: 8px;
+        height: 220px;
+        background-color: #000000;
+    }
+
+
+    /* 2. transform */
+    .target-transform {
+        position: relative;
+        width: 220px;
+        height: 220px;
+        margin: 20px;
+    }
+
+    .target-transform .t-ring {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 140px;
+        height: 140px;
+        border: 20px solid #000000;
+        border-radius: 50%;
+        box-sizing: content-box;
+        transform: translate(-50%, -50%);
+    }
+
+    .target-transform .t-center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 70px;
+        height: 70px;
+        background-color: #000000;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .target-transform .t-axis {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 220px;
+        height: 8px;
+        background-color: #000000;
+        transform: translate(-50%, -50%);
+    }
+
+    .target-transform .t-axis.rotated {
+        transform: translate(-50%, -50%) rotate(90deg);
+    }

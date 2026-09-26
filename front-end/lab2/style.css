@@ -1,111 +1,125 @@
 body {
-        font-family: Arial, sans-serif;
-        padding: 30px;
-        background-color: #ffffff;
-        color: #222;
-    }
+    font-family: Arial, sans-serif;
+    padding: 30px;
+    background-color: #ffffff;
+    color: #222;
+}
 
-    .targets-wrapper {
-        display: flex;
-        gap: 60px;
-        margin-top: 20px;
-    }
+.targets-wrapper {
+    display: flex;
+    gap: 70px;
+    margin-top: 25px;
+}
 
-    .target-card {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+.target-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-    /* 1. position */
-    .target-position {
-        position: relative;
-        width: 220px;
-        height: 220px;
-        margin: 20px;
-    }
+/* position */
+.gear-pos {
+    position: relative;
+    width: 220px;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-    .target-position .outer-ring {
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        width: 140px;
-        height: 140px;
-        border: 20px solid #000000;
-        border-radius: 50%;
-        box-sizing: content-box;
-    }
+.gear-pos .tooth {
+    position: absolute;
+    top: 20px;
+    left: 85px;
+    width: 50px;
+    height: 180px;
+    background-color: #9a9a9a;
+    border-radius: 4px;
+}
 
-    .target-position .inner-circle {
-        position: absolute;
-        top: 75px;
-        left: 75px;
-        width: 70px;
-        height: 70px;
-        background-color: #000000;
-        border-radius: 50%;
-    }
+.gear-pos .tooth.t0 {
+    top: 20px;
+    left: 85px;
+}
 
-    .target-position .line-h {
-        position: absolute;
-        top: 106px;
-        left: 0;
-        width: 220px;
-        height: 8px;
-        background-color: #000000;
-    }
+.gear-pos .tooth.t90 {
+    top: 85px;
+    left: 20px;
+    width: 180px;
+    height: 50px;
+}
 
-    .target-position .line-v {
-        position: absolute;
-        top: 0;
-        left: 106px;
-        width: 8px;
-        height: 220px;
-        background-color: #000000;
-    }
+.gear-pos .tooth.t45 {
+    transform: rotate(45deg);
+}
 
+.gear-pos .tooth.t135 {
+    transform: rotate(135deg);
+}
 
-    /* 2. transform */
-    .target-transform {
-        position: relative;
-        width: 220px;
-        height: 220px;
-        margin: 20px;
-    }
+.gear-pos .gear-body {
+    position: absolute;
+    top: 35px;
+    left: 35px;
+    width: 150px;
+    height: 150px;
+    background-color: #9a9a9a;
+    border-radius: 50%;
+}
 
-    .target-transform .t-ring {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 140px;
-        height: 140px;
-        border: 20px solid #000000;
-        border-radius: 50%;
-        box-sizing: content-box;
-        transform: translate(-50%, -50%);
-    }
+.gear-pos .gear-hole {
+    position: absolute;
+    top: 75px;
+    left: 75px;
+    width: 70px;
+    height: 70px;
+    background-color: #ffffff;
+    border-radius: 50%;
+}
 
-    .target-transform .t-center {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 70px;
-        height: 70px;
-        background-color: #000000;
-        border-radius: 50%;
-        transform: translate(-50%, -50%);
-    }
+/* transform */
+.gear-tf {
+    position: relative;
+    width: 220px;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-    .target-transform .t-axis {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 220px;
-        height: 8px;
-        background-color: #000000;
-        transform: translate(-50%, -50%);
-    }
+.gear-tf .t-tooth {
+    position: absolute;
+    width: 50px;
+    height: 180px;
+    background-color: #9a9a9a;
+    border-radius: 4px;
+}
 
-    .target-transform .t-axis.rotated {
-        transform: translate(-50%, -50%) rotate(90deg);
-    }
+.gear-tf .t-tooth.rot-45 {
+    transform: rotate(45deg);
+}
+
+.gear-tf .t-tooth.rot-90 {
+    transform: rotate(90deg);
+}
+
+.gear-tf .t-tooth.rot-135 {
+    transform: rotate(135deg);
+}
+
+.gear-tf .t-body {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background-color: #9a9a9a;
+    border-radius: 50%;
+}
+
+.gear-tf .t-hole {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    transform: scale(1);
+}

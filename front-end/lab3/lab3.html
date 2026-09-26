@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="CSS float, CSS flexbox, блочна верстка, КПІ, ФІОТ">
+    <meta name="description" content="Основи Front-end технологій. Лабораторна робота №3, Варіант 10">
+    <title>Друченко О.С. ІК-41 ЛР-3 Вар-10</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>Завдання 1. Блочна верстка за допомогою Float (Варіант №10)</h2>
+    <div class="layout-container float-layout clearfix">
+        <aside class="block block-img-left">
+            <img src="me.jpg" alt="Олексій Друченко">
+        </aside>
+
+        <div class="right-column-float">
+            <header class="block block-text-top">
+                <h3>Друченко Олексій Сергійович | ФІОТ КПІ, група ІК-41</h3>
+            </header>
+            
+            <main class="block block-text-main">
+                <p>Навчаюся на спеціальності 126 «Інформаційні системи та технології». Окрім фронтенду цікавлюся бекенд-розробкою, базами даних і системним проєктуванням.</p>
+                <p>У вільний час займаюся силовим тренуванням у залі, слухаю музику, цікавлюся кіберспортом та студентськими технічними ініціативами на факультеті.</p>
+            </main>
+            
+            <div class="bottom-row-float clearfix">
+                <div class="block block-text-bottom">
+                    <p>Кафедра ІСТ • Лабораторна робота №3 • 2026 рік</p>
+                </div>
+                <div class="block block-img-bottom">
+                    <img src="kpi.jpg" alt="КПІ">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <h2>Завдання 2. Блочна верстка за допомогою Flexbox (Варіант №10)</h2>
+    <div class="layout-container flex-layout">
+        <aside class="block block-img-left">
+            <img src="me.jpg" alt="Олексій Друченко">
+        </aside>
+
+        <div class="right-column-flex">
+            <header class="block block-text-top">
+                <h3>Друченко Олексій Сергійович | ФІОТ КПІ, група ІК-41</h3>
+            </header>
+            
+            <main class="block block-text-main">
+                <p>Навчаюся на спеціальності 126 «Інформаційні системи та технології». Окрім фронтенду цікавлюся бекенд-розробкою, базами даних і системним проєктуванням.</p>
+                <p>У вільний час займаюся силовим тренуванням у залі, слухаю музику, цікавлюся кіберспортом та студентськими технічними ініціативами на факультеті.</p>
+            </main>
+            
+            <div class="bottom-row-flex">
+                <div class="block block-text-bottom">
+                    <p>Кафедра ІСТ • Лабораторна робота №3 • 2026 рік</p>
+                </div>
+                <div class="block block-img-bottom">
+                    <img src="kpi.jpg" alt="КПІ">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

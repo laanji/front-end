@@ -1,0 +1,36 @@
+body {
+    font-family: "Times New Roman", serif;
+    font-size: 16px;
+    line-height: 1.4;
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 0 16px;
+}
+
+#author-name,
+.birth-info {
+    cursor: pointer;
+    padding: 4px 8px;
+}
+
+#gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+#gallery img {
+    max-width: 100%;
+    height: auto;
+}
+
+.buttons {
+    margin-top: 12px;
+}
+
+.buttons button {
+    padding: 6px 14px;
+    margin-right: 8px;
+    cursor: pointer;
+}

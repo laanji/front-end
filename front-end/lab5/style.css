@@ -1,0 +1,76 @@
+body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 0 16px;
+}
+
+h2 {
+    margin-top: 32px;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+    padding: 6px 8px;
+    border: 2px solid transparent;
+    border-radius: 6px;
+}
+
+.row label {
+    width: 90px;
+    font-weight: bold;
+}
+
+.row input {
+    flex: 1;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #999;
+    border-radius: 4px;
+}
+
+.row.error {
+    background-color: #ffd6d6;
+    border-color: #d32f2f;
+}
+
+form button {
+    padding: 8px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.result {
+    margin-top: 16px;
+}
+
+.palette {
+    margin-bottom: 12px;
+}
+
+.palette input {
+    vertical-align: middle;
+    width: 60px;
+    height: 30px;
+    cursor: pointer;
+}
+
+#grid {
+    border-collapse: collapse;
+}
+
+#grid td {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #333;
+    text-align: center;
+    font-weight: bold;
+}
+
+#grid td.target {
+    cursor: pointer;
+}

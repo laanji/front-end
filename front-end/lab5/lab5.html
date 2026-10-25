@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="JavaScript, події, регулярні вирази, форма, таблиця, Друченко">
+    <meta name="description" content="Основи Front-end технологій. Лабораторна робота №5">
+    <title>Друченко О.С., ІК-41, Лаб. 5, Варіант 10</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>Завдання 1. Форма для заповнення</h2>
+
+    <form id="user-form" novalidate>
+        <div class="row">
+            <label for="fullname">ПІБ</label>
+            <input type="text" id="fullname" placeholder="Друченко О.С.">
+        </div>
+        <div class="row">
+            <label for="group">Група</label>
+            <input type="text" id="group" placeholder="ІК-41">
+        </div>
+        <div class="row">
+            <label for="phone">Телефон</label>
+            <input type="text" id="phone" placeholder="(097)-900-36-78">
+        </div>
+        <div class="row">
+            <label for="address">Адреса</label>
+            <input type="text" id="address" placeholder="м. Київ">
+        </div>
+        <div class="row">
+            <label for="email">E-mail</label>
+            <input type="text" id="email" placeholder="druchenkoalex7@gmail.com">
+        </div>
+        <button type="submit">Підтвердити</button>
+    </form>
+
+    <div id="result" class="result"></div>
+
+    <h2>Завдання 2. Таблиця 6×6</h2>
+
+    <div class="palette">
+        <label for="palette">Палітра:</label>
+        <input type="color" id="palette" value="#2e86de">
+    </div>
+
+    <table id="grid"></table>
+
+    <script src="script.js"></script>
+</body>
+</html>

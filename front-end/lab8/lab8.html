@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="HTML5, CSS3, верстка, flexbox, grid, адаптивний дизайн, Auction, Друченко">
+    <meta name="description" content="Основи Front-end технологій. Лабораторна робота №8. Верстка сайту Auction (варіант 10)">
+    <title>Друченко О.С., ІК-41, Лаб. 8, Варіант 10</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- SVG-спрайт іконок -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" fill="currentColor"/><path d="M4 21c0-5 4-8 8-8s8 3 8 8z" fill="currentColor"/></symbol>
+        <symbol id="i-money" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="currentColor"/></symbol>
+        <symbol id="i-cup" viewBox="0 0 24 24"><path d="M3 4h18l-8 9v6h4v2H7v-2h4v-6z" fill="currentColor"/></symbol>
+        <symbol id="i-trophy" viewBox="0 0 24 24"><path d="M7 3h10v6a5 5 0 0 1-10 0zM3 4h3v4a3 3 0 0 1-3-3zm18 0h-3v4a3 3 0 0 0 3-3zM11 14h2v4h3v3H8v-3h3z" fill="currentColor"/></symbol>
+        <symbol id="i-plane" viewBox="0 0 24 24"><path d="M2 11 22 2l-5 19-6-6-4 5v-7z" fill="currentColor"/></symbol>
+        <symbol id="i-smile" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="9" cy="10" r="1.3" fill="currentColor"/><circle cx="15" cy="10" r="1.3" fill="currentColor"/><path d="M7.5 14.5a5 5 0 0 0 9 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+        <symbol id="i-buoy" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="12" cy="12" r="3.5" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+    </svg>
+
+    <header class="hero" id="home">
+        <div class="container navbar">
+            <a class="logo" href="#home">Auction</a>
+
+            <input type="checkbox" id="menu-toggle" class="menu-toggle">
+            <label for="menu-toggle" class="burger" aria-label="Menu"><span></span><span></span><span></span></label>
+
+            <nav class="menu">
+                <ul>
+                    <li><a class="active" href="#home">Home</a></li>
+                    <li><a href="#auctions">Buy</a></li>
+                    <li><a href="#how">Sell</a></li>
+                    <li><a href="#how" class="has-arrow">Services</a></li>
+                    <li><a href="#testimonials">Blog</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#footer">Contact</a></li>
+                </ul>
+                <a class="sign" href="#">Sign In / Register</a>
+            </nav>
+        </div>
+
+        <div class="hero-content">
+            <h1>The Best Place to<br>Buy and Sell</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit, nihil.</p>
+            <a class="btn" href="#">Register</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="section" id="auctions">
+            <div class="container">
+                <div class="title center">
+                    <span class="label">Auctions</span>
+                    <h2>Current <b>Auctions</b></h2>
+                </div>
+
+                <div class="cards">
+                    <article class="card">
+                        <span class="price">$95</span>
+                        <img src="images/shoes.svg" alt="Pinky Shoes">
+                        <div class="card-body">
+                            <h3>Pinky Shoes</h3>
+                            <p class="meta"><span>Shoes</span><span>4 bids</span></p>
+                            <a class="btn-light" href="#">Submit a Bid</a>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <span class="price">$30</span>
+                        <img src="images/glasses.svg" alt="Eye Gloss Eye Protector">
+                        <div class="card-body">
+                            <h3>Eye Gloss Eye Protector</h3>
+                            <p class="meta"><span>Eye Glasses</span><span>10 bids</span></p>
+                            <a class="btn-light" href="#">Submit a Bid</a>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <span class="price">$199</span>
+                        <img src="images/jacket.svg" alt="Black Leather Jacket">
+                        <div class="card-body">
+                            <h3>Black Leather Jacket</h3>
+                            <p class="meta"><span>Clothing</span><span>24 bids</span></p>
+                            <a class="btn-light" href="#">Submit a Bid</a>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <span class="price">$1,999</span>
+                        <img src="images/laptop.svg" alt="MacBook 15-Inch Laptop">
+                        <div class="card-body">
+                            <h3>MacBook 15-Inch Laptop</h3>
+                            <p class="meta"><span>Clothing</span><span>224 bids</span></p>
+                            <a class="btn-light" href="#">Submit a Bid</a>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <span class="price">$777</span>
+                        <img src="images/ipad.svg" alt="iPad">
+                        <div class="card-body">
+                            <h3>iPad</h3>
+                            <p class="meta"><span>Electronics</span><span>11 bids</span></p>
+                            <a class="btn-light" href="#">Submit a Bid</a>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <span class="price">$78</span>
+                        <img src="images/sneakers.svg" alt="Shoe Sneakers">
+                        <div class="card-body">
+                            <h3>Shoe Sneakers</h3>
+                            <p class="meta"><span>Shoes</span><span>4 bids</span></p>
+                            <a class="btn-light" href="#">Submit a Bid</a>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <span class="price">$1,999</span>
+                        <img src="images/imac.svg" alt="iMac">
+                        <div class="card-body">
+                            <h3>iMac</h3>
+                            <p class="meta"><span>Electronics</span><span>293 bids</span></p>
+                            <a class="btn-light" href="#">Submit a Bid</a>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <span class="price">$450</span>
+                        <img src="images/watch.svg" alt="iWatch">
+                        <div class="card-body">
+                            <h3>iWatch</h3>
+                            <p class="meta"><span>Electronics</span><span>123 bids</span></p>
+                            <a class="btn-light" href="#">Submit a Bid</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="how">
+            <div class="container">
+                <div class="title">
+                    <span class="label">How?</span>
+                    <h2>How <b>It Works</b></h2>
+                </div>
+
+                <div class="steps">
+                    <div class="step">
+                        <span class="icon"><svg><use href="#i-user"/></svg></span>
+                        <h3>Register</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed consequatur quaerat magnam sequi nobis ut et iure.</p>
+                    </div>
+                    <div class="step">
+                        <span class="icon"><svg><use href="#i-money"/></svg></span>
+                        <h3>Buy or Bid</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed consequatur quaerat magnam sequi nobis ut et iure.</p>
+                    </div>
+                    <div class="step">
+                        <span class="icon"><svg><use href="#i-cup"/></svg></span>
+                        <h3>Submit a bid</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed consequatur quaerat magnam sequi nobis ut et iure.</p>
+                    </div>
+                    <div class="step">
+                        <span class="icon"><svg><use href="#i-trophy"/></svg></span>
+                        <h3>Win</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed consequatur quaerat magnam sequi nobis ut et iure.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="about">
+            <div class="container about">
+                <img src="images/hero.jpg" alt="About us">
+                <div class="about-text">
+                    <div class="title">
+                        <span class="label">About?</span>
+                        <h2>About <b>Us</b></h2>
+                    </div>
+                    <ul class="features">
+                        <li>
+                            <span class="icon"><svg><use href="#i-plane"/></svg></span>
+                            <div><h4>Fast Support</h4><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste, debitis!</p></div>
+                        </li>
+                        <li>
+                            <span class="icon"><svg><use href="#i-smile"/></svg></span>
+                            <div><h4>Happy Customers</h4><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste, debitis!</p></div>
+                        </li>
+                        <li>
+                            <span class="icon"><svg><use href="#i-buoy"/></svg></span>
+                            <div><h4>24/7 Support</h4><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste, debitis!</p></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials" id="testimonials">
+            <div class="container">
+                <div class="title center light">
+                    <span class="label">Testimonials</span>
+                    <h2>Happy <b>Clients</b></h2>
+                </div>
+
+                <div class="reviews">
+                    <blockquote class="review">
+                        <div class="author">
+                            <img src="images/avatar.svg" alt="Allison Holmes">
+                            <div><strong>Allison Holmes</strong><span>Designer</span></div>
+                        </div>
+                        <p>“Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, mollitia. Possimus mollitia nobis libero quidem aut tempore dolore iure maiores, perferendis, provident numquam illum nisi amet necessitatibus. A, provident aperiam!”</p>
+                    </blockquote>
+                    <blockquote class="review">
+                        <div class="author">
+                            <img src="images/avatar.svg" alt="Allison Holmes">
+                            <div><strong>Allison Holmes</strong><span>Designer</span></div>
+                        </div>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, mollitia. Possimus mollitia nobis libero quidem aut tempore dolore iure maiores, perferendis, provident numquam illum nisi amet necessitatibus. A, provident aperiam!</p>
+                    </blockquote>
+                </div>
+
+                <div class="dots"><span></span><span></span><span class="on"></span></div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="footer">
+        <div class="container">
+            <p>© 2026 Auction. Друченко О.С., ІК-41 — Лабораторна робота №8, варіант 10</p>
+        </div>
+    </footer>
+</body>
+</html>

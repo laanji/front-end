@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="HTML5, CSS3, верстка, flexbox, grid, адаптивний дизайн, Auction, Друченко">
+    <meta name="description" content="Основи Front-end технологій. Лабораторна робота №8. Верстка сайту Auction (варіант 10)">
+    <title>Друченко О.С., ІК-41, Лаб. 8, Варіант 10</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- SVG-спрайт іконок -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" fill="currentColor"/><path d="M4 21c0-5 4-8 8-8s8 3 8 8z" fill="currentColor"/></symbol>
+        <symbol id="i-money" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="currentColor"/></symbol>
+        <symbol id="i-cup" viewBox="0 0 24 24"><path d="M3 4h18l-8 9v6h4v2H7v-2h4v-6z" fill="currentColor"/></symbol>
+        <symbol id="i-trophy" viewBox="0 0 24 24"><path d="M7 3h10v6a5 5 0 0 1-10 0zM3 4h3v4a3 3 0 0 1-3-3zm18 0h-3v4a3 3 0 0 0 3-3zM11 14h2v4h3v3H8v-3h3z" fill="currentColor"/></symbol>
+        <symbol id="i-plane" viewBox="0 0 24 24"><path d="M2 11 22 2l-5 19-6-6-4 5v-7z" fill="currentColor"/></symbol>
+        <symbol id="i-smile" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="9" cy="10" r="1.3" fill="currentColor"/><circle cx="15" cy="10" r="1.3" fill="currentColor"/><path d="M7.5 14.5a5 5 0 0 0 9 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+        <symbol id="i-buoy" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="12" cy="12" r="3.5" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+    </svg>
+
+    <header class="hero" id="home">
+        <div class="container navbar">
+            <a class="logo" href="#home">Auction</a>
+
+            <input type="checkbox" id="menu-toggle" class="menu-toggle">
+            <label for="menu-toggle" class="burger" aria-label="Menu"><span></span><span></span><span></span></label>
+
+            <nav class="menu">
+                <ul>
+                    <li><a class="active" href="#home" data-i18n="nav_home">Головна</a></li>
+                    <li><a href="#auctions" data-i18n="nav_buy">Купити</a></li>
+                    <li><a href="#" data-open="sell" data-i18n="nav_sell">Продати</a></li>
+                    <li class="dropdown">
+                        <a class="has-arrow" href="#" aria-haspopup="true" data-i18n="nav_services">Послуги</a>
+                        <ul class="submenu">
+                            <li><a href="#auctions" data-i18n="sub_all">Усі аукціони</a></li>
+                            <li><a href="#" data-open="sell" data-i18n="sub_sell">Виставити товар</a></li>
+                            <li><a href="#how" data-i18n="sub_how">Як це працює</a></li>
+                            <li><a href="#footer" data-i18n="sub_support">Підтримка</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#testimonials" data-i18n="nav_blog">Блог</a></li>
+                    <li><a href="#about" data-i18n="nav_about">Про нас</a></li>
+                    <li><a href="#footer" data-i18n="nav_contact">Контакти</a></li>
+                </ul>
+                <div class="menu-right">
+                    <a class="sign" id="sign-link" href="#" data-open="auth" data-i18n="sign_in">Вхід / Реєстрація</a>
+                    <div class="lang" role="group" aria-label="Language">
+                        <button type="button" class="lang-btn active" data-lang="uk">UA</button>
+                        <button type="button" class="lang-btn" data-lang="en">EN</button>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div class="hero-content">
+            <h1 data-i18n-html="hero_title">Найкраще місце<br>для купівлі та продажу</h1>
+            <p data-i18n="hero_text">Торгуйте вигідно: змагайтеся за лоти, знаходьте унікальні речі та продавайте власні.</p>
+            <a class="btn" href="#" data-open="auth" data-tab="register" data-i18n="hero_btn">Зареєструватися</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="section" id="auctions">
+            <div class="container">
+                <div class="title center">
+                    <span class="label" data-i18n="auc_label">Аукціони</span>
+                    <h2 data-i18n-html="auc_title">Поточні <b>аукціони</b></h2>
+                </div>
+
+                <div class="filters" id="filters">
+                    <button class="filter active" type="button" data-filter="All" data-i18n="f_all">Усі</button>
+                    <button class="filter" type="button" data-filter="shoes" data-i18n="cat_shoes">Взуття</button>
+                    <button class="filter" type="button" data-filter="clothing" data-i18n="cat_clothing">Одяг</button>
+                    <button class="filter" type="button" data-filter="accessories" data-i18n="cat_accessories">Аксесуари</button>
+                    <button class="filter" type="button" data-filter="electronics" data-i18n="cat_electronics">Електроніка</button>
+                    <button class="filter" type="button" data-filter="books" data-i18n="cat_books">Книги</button>
+                    <button class="filter" type="button" data-filter="home" data-i18n="cat_home">Дім</button>
+                </div>
+
+                <div class="cards" id="cards">
+                    <article class="card" data-pid="1" data-cat="shoes" data-price="3499">
+                        <span class="price">3 499 ₴</span>
+                        <img src="images/products/p1.jpg" alt="Кросівки Nike Air Max 270" onerror="this.onerror=null;this.src='images/shoes.svg'">
+                        <div class="card-body">
+                            <h3 class="card-title">Кросівки Nike Air Max 270</h3>
+                            <p class="meta"><span class="card-cat">Взуття</span><span class="bids" data-bids="4">4 ставки</span></p>
+                            <button class="btn-light bid-btn" type="button" data-i18n="bid_btn">Зробити ставку</button>
+                        </div>
+                    </article>
+                    <article class="card" data-pid="2" data-cat="accessories" data-price="2999">
+                        <span class="price">2 999 ₴</span>
+                        <img src="images/products/p2.jpg" alt="Сонцезахисні окуляри Ray-Ban Wayfarer" onerror="this.onerror=null;this.src='images/glasses.svg'">
+                        <div class="card-body">
+                            <h3 class="card-title">Сонцезахисні окуляри Ray-Ban Wayfarer</h3>
+                            <p class="meta"><span class="card-cat">Аксесуари</span><span class="bids" data-bids="10">10 ставок</span></p>
+                            <button class="btn-light bid-btn" type="button" data-i18n="bid_btn">Зробити ставку</button>
+                        </div>
+                    </article>
+                    <article class="card" data-pid="3" data-cat="clothing" data-price="4200">
+                        <span class="price">4 200 ₴</span>
+                        <img src="images/products/p3.jpg" alt="Шкіряна куртка-косуха" onerror="this.onerror=null;this.src='images/jacket.svg'">
+                        <div class="card-body">
+                            <h3 class="card-title">Шкіряна куртка-косуха</h3>
+                            <p class="meta"><span class="card-cat">Одяг</span><span class="bids" data-bids="24">24 ставки</span></p>
+                            <button class="btn-light bid-btn" type="button" data-i18n="bid_btn">Зробити ставку</button>
+                        </div>
+                    </article>
+                    <article class="card" data-pid="4" data-cat="electronics" data-price="41999">
+                        <span class="price">41 999 ₴</span>
+                        <img src="images/products/p4.jpg" alt="Ноутбук Apple MacBook Air 13" M2" onerror="this.onerror=null;this.src='images/laptop.svg'">
+                        <div class="card-body">
+                            <h3 class="card-title">Ноутбук Apple MacBook Air 13" M2</h3>
+                            <p class="meta"><span class="card-cat">Електроніка</span><span class="bids" data-bids="224">224 ставки</span></p>
+                            <button class="btn-light bid-btn" type="button" data-i18n="bid_btn">Зробити ставку</button>
+                        </div>
+                    </article>
+                    <article class="card" data-pid="5" data-cat="electronics" data-price="13499">
+                        <span class="price">13 499 ₴</span>
+                        <img src="images/products/p5.jpg" alt="Планшет Apple iPad 10.2"" onerror="this.onerror=null;this.src='images/ipad.svg'">
+                        <div class="card-body">
+                            <h3 class="card-title">Планшет Apple iPad 10.2"</h3>
+                            <p class="meta"><span class="card-cat">Електроніка</span><span class="bids" data-bids="11">11 ставок</span></p>
+                            <button class="btn-light bid-btn" type="button" data-i18n="bid_btn">Зробити ставку</button>
+                        </div>
+                    </article>
+                    <article class="card" data-pid="6" data-cat="books" data-price="780">
+                        <span class="price">780 ₴</span>
+                        <img src="images/products/p6.jpg" alt="Тарас Шевченко — Кобзар (подарункове видання)" onerror="this.onerror=null;this.src='images/book.svg'">
+                        <div class="card-body">
+                            <h3 class="card-title">Тарас Шевченко — Кобзар (подарункове видання)</h3>
+                            <p class="meta"><span class="card-cat">Книги</span><span class="bids" data-bids="4">4 ставки</span></p>
+                            <button class="btn-light bid-btn" type="button" data-i18n="bid_btn">Зробити ставку</button>
+                        </div>
+                    </article>
+                    <article class="card" data-pid="7" data-cat="home" data-price="16999">
+                        <span class="price">16 999 ₴</span>
+                        <img src="images/products/p7.jpg" alt="Кавомашина De’Longhi Magnifica S" onerror="this.onerror=null;this.src='images/coffee.svg'">
+                        <div class="card-body">
+                            <h3 class="card-title">Кавомашина De’Longhi Magnifica S</h3>
+                            <p class="meta"><span class="card-cat">Дім</span><span class="bids" data-bids="293">293 ставки</span></p>
+                            <button class="btn-light bid-btn" type="button" data-i18n="bid_btn">Зробити ставку</button>
+                        </div>
+                    </article>
+                    <article class="card" data-pid="8" data-cat="electronics" data-price="10499">
+                        <span class="price">10 499 ₴</span>
+                        <img src="images/products/p8.jpg" alt="Смарт-годинник Apple Watch SE" onerror="this.onerror=null;this.src='images/watch.svg'">
+                        <div class="card-body">
+                            <h3 class="card-title">Смарт-годинник Apple Watch SE</h3>
+                            <p class="meta"><span class="card-cat">Електроніка</span><span class="bids" data-bids="123">123 ставки</span></p>
+                            <button class="btn-light bid-btn" type="button" data-i18n="bid_btn">Зробити ставку</button>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="how">
+            <div class="container">
+                <div class="title">
+                    <span class="label" data-i18n="how_label">Як?</span>
+                    <h2 data-i18n-html="how_title">Як це <b>працює</b></h2>
+                </div>
+                <div class="steps">
+                    <div class="step"><span class="icon"><svg><use href="#i-user"/></svg></span><h3 data-i18n="step1_t">Реєстрація</h3><p data-i18n="step1_d">Створіть безкоштовний акаунт за хвилину — потрібні лише ім’я та електронна пошта.</p></div>
+                    <div class="step"><span class="icon"><svg><use href="#i-money"/></svg></span><h3 data-i18n="step2_t">Обирайте лот</h3><p data-i18n="step2_d">Перегляньте поточні аукціони та оберіть лот, який вам до душі.</p></div>
+                    <div class="step"><span class="icon"><svg><use href="#i-cup"/></svg></span><h3 data-i18n="step3_t">Робіть ставку</h3><p data-i18n="step3_d">Запропонуйте свою ціну. Якщо вашу ставку перебили — зробіть нову.</p></div>
+                    <div class="step"><span class="icon"><svg><use href="#i-trophy"/></svg></span><h3 data-i18n="step4_t">Вигравайте</h3><p data-i18n="step4_d">Хто запропонував найвищу ціну на момент завершення аукціону — той і забирає лот.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="about">
+            <div class="container about">
+                <img src="images/hero.jpg" alt="About us">
+                <div class="about-text">
+                    <div class="title">
+                        <span class="label" data-i18n="about_label">Про нас</span>
+                        <h2 data-i18n-html="about_title">Про <b>нас</b></h2>
+                    </div>
+                    <ul class="features">
+                        <li><span class="icon"><svg><use href="#i-plane"/></svg></span><div><h4 data-i18n="feat1_t">Швидка підтримка</h4><p data-i18n="feat1_d">Відповідаємо на звернення протягом кількох хвилин і допомагаємо з будь-яким питанням.</p></div></li>
+                        <li><span class="icon"><svg><use href="#i-smile"/></svg></span><div><h4 data-i18n="feat2_t">Задоволені клієнти</h4><p data-i18n="feat2_d">Тисячі покупців уже знайшли на нашому майданчику саме те, що шукали.</p></div></li>
+                        <li><span class="icon"><svg><use href="#i-buoy"/></svg></span><div><h4 data-i18n="feat3_t">Підтримка 24/7</h4><p data-i18n="feat3_d">Команда на зв’язку цілодобово, навіть у вихідні та святкові дні.</p></div></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials" id="testimonials">
+            <div class="container">
+                <div class="title center light">
+                    <span class="label" data-i18n="rev_label">Відгуки</span>
+                    <h2 data-i18n-html="rev_title">Задоволені <b>клієнти</b></h2>
+                </div>
+                <div class="reviews">
+                    <blockquote class="review">
+                        <div class="author">
+                            <img src="images/avatar.svg" alt="">
+                            <div><strong data-i18n="rev1_name">Олена Коваленко</strong><span data-i18n="rev1_role">Дизайнерка</span></div>
+                        </div>
+                        <p data-i18n="rev1_text">«Користуюся майданчиком уже пів року. Виграла кілька лотів за вигідною ціною, а оформлення ставки займає лічені секунди. Дуже зручно!»</p>
+                    </blockquote>
+                    <blockquote class="review">
+                        <div class="author">
+                            <img src="images/avatar.svg" alt="">
+                            <div><strong data-i18n="rev2_name">Андрій Мельник</strong><span data-i18n="rev2_role">Розробник</span></div>
+                        </div>
+                        <p data-i18n="rev2_text">Продав тут свій старий ноутбук і за добу отримав кілька ставок. Інтерфейс простий, а підтримка швидко допомогла з усіма питаннями.</p>
+                    </blockquote>
+                </div>
+                <div class="dots"><span></span><span></span><span class="on"></span></div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="footer">
+        <div class="container footer-grid">
+            <div class="footer-info">
+                <h3 data-i18n="ft_title">Зв’яжіться з нами</h3>
+                <p data-i18n="ft_city">Київ, Україна</p>
+                <p>support@auction.example</p>
+                <p>+380 00 000 00 00</p>
+            </div>
+            <form id="contact-form" class="contact-form" novalidate>
+                <input type="text" name="name" data-i18n-ph="ft_name_ph" placeholder="Ваше ім’я">
+                <input type="email" name="email" data-i18n-ph="ft_email_ph" placeholder="Ваша електронна пошта">
+                <textarea name="message" rows="3" data-i18n-ph="ft_msg_ph" placeholder="Повідомлення"></textarea>
+                <p class="form-error" role="alert"></p>
+                <button class="btn" type="submit" data-i18n="ft_send">Надіслати</button>
+            </form>
+        </div>
+        <p class="copy" data-i18n="ft_copy">© 2026 Auction. Друченко О.С., ІК-41 — Лабораторна робота №8, варіант 10</p>
+    </footer>
+
+    <!-- Вікно входу / реєстрації -->
+    <dialog id="dlg-auth" class="dialog">
+        <button class="dlg-close" type="button" data-close aria-label="Close">&times;</button>
+        <div class="tabs">
+            <button class="tab active" type="button" data-tab="signin" data-i18n="tab_in">Вхід</button>
+            <button class="tab" type="button" data-tab="register" data-i18n="tab_reg">Реєстрація</button>
+        </div>
+        <p class="dlg-note" id="auth-note" hidden></p>
+
+        <form id="form-signin" novalidate>
+            <label><span data-i18n="lbl_email">Електронна пошта</span><input type="email" name="email" autocomplete="email"></label>
+            <label><span data-i18n="lbl_pass">Пароль</span><input type="password" name="password" autocomplete="current-password"></label>
+            <p class="form-error" role="alert"></p>
+            <button class="btn" type="submit" data-i18n="btn_signin">Увійти</button>
+        </form>
+
+        <form id="form-register" novalidate hidden>
+            <label><span data-i18n="lbl_name">Ім’я</span><input type="text" name="name" autocomplete="name"></label>
+            <label><span data-i18n="lbl_email">Електронна пошта</span><input type="email" name="email" autocomplete="email"></label>
+            <label><span data-i18n="lbl_pass_new">Пароль (від 6 символів)</span><input type="password" name="password" autocomplete="new-password"></label>
+            <label><span data-i18n="lbl_confirm">Підтвердіть пароль</span><input type="password" name="confirm" autocomplete="new-password"></label>
+            <p class="form-error" role="alert"></p>
+            <button class="btn" type="submit" data-i18n="btn_create">Створити акаунт</button>
+        </form>
+    </dialog>
+
+    <!-- Вікно ставки -->
+    <dialog id="dlg-bid" class="dialog">
+        <button class="dlg-close" type="button" data-close aria-label="Close">&times;</button>
+        <h3 id="bid-title"></h3>
+        <p class="dlg-note"><span data-i18n="bid_current">Поточна ставка:</span> <b id="bid-current"></b></p>
+        <form id="form-bid" novalidate>
+            <label><span data-i18n="lbl_amount">Ваша ставка, ₴</span><input type="number" name="amount" min="1" step="1"></label>
+            <p class="form-error" role="alert"></p>
+            <button class="btn" type="submit" data-i18n="btn_place">Зробити ставку</button>
+        </form>
+    </dialog>
+
+    <!-- Вікно продажу -->
+    <dialog id="dlg-sell" class="dialog">
+        <button class="dlg-close" type="button" data-close aria-label="Close">&times;</button>
+        <h3 data-i18n="sell_title">Виставити товар</h3>
+        <form id="form-sell" novalidate>
+            <label><span data-i18n="lbl_item">Назва товару</span><input type="text" name="title"></label>
+            <label><span data-i18n="lbl_cat">Категорія</span>
+                <select name="category">
+                    <option value="shoes" data-i18n="cat_shoes">Взуття</option>
+                    <option value="clothing" data-i18n="cat_clothing">Одяг</option>
+                    <option value="accessories" data-i18n="cat_accessories">Аксесуари</option>
+                    <option value="electronics" data-i18n="cat_electronics">Електроніка</option>
+                    <option value="books" data-i18n="cat_books">Книги</option>
+                    <option value="home" data-i18n="cat_home">Дім</option>
+                </select>
+            </label>
+            <label><span data-i18n="lbl_start">Стартова ціна, ₴</span><input type="number" name="price" min="1" step="1"></label>
+            <p class="form-error" role="alert"></p>
+            <button class="btn" type="submit" data-i18n="btn_publish">Опублікувати лот</button>
+        </form>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="i18n.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

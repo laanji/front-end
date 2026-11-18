@@ -6,7 +6,6 @@
 
     const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    // ---------- сховище ----------
     function load(key, fallback) {
         try {
             const value = localStorage.getItem(key);
@@ -16,14 +15,12 @@
         }
     }
     function save(key, value) {
-        try { localStorage.setItem(key, JSON.stringify(value)); } catch (e) { /* ігноруємо */ }
+        try { localStorage.setItem(key, JSON.stringify(value)); } catch (e) {  }
     }
 
-    // ---------- мова ----------
     let lang = load('auction_lang', 'uk');
     if (!I18N[lang]) { lang = 'uk'; }
 
-    // переклад за ключем; {name}, {price} тощо підставляються з params
     function t(key, params) {
         let text = (I18N[lang] && I18N[lang][key]) || I18N.uk[key] || key;
         if (params) {
@@ -42,7 +39,6 @@
         return n + ' ' + word;
     }
 
-    // ---------- сповіщення, помилки ----------
     let toastTimer;
     function toast(message) {
         const el = $('#toast');
@@ -58,20 +54,19 @@
         $('#menu-toggle').checked = false;
     }
 
-    // ---------- діалоги ----------
     $$('dialog').forEach((dlg) => {
         dlg.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });
         $$('[data-close]', dlg).forEach((b) => b.addEventListener('click', () => dlg.close()));
     });
 
-    // ---------- користувачі (навчальний приклад: дані зберігаються в localStorage) ----------
+    // демо-вхід: дані зберігаються в браузері.
     let users = load('auction_users', []);
     let currentUser = load('auction_current', null);
-    let pending = null;      // дія, яку виконаємо після входу
+    let pending = null; // дія після входу.
     let bidCard = null;
 
     function updateAuthUI() {
-        $('#sign-link').textContent = currentUser ? t('sign_user', { name: currentUser.name }) : t('sign_in');
+        $('#sign-link').textContent = currentUser ? t('sign_user', { name: currentUser.name.split(' ')[0] }) : t('sign_in');
     }
 
     function showTab(tab) {
@@ -153,7 +148,6 @@
         finishAuth(user, t('t_back', { name: user.name }));
     });
 
-    // ---------- кнопки з data-open (меню, Register, Sign in, Sell) ----------
     $$('[data-open]').forEach((el) => {
         el.addEventListener('click', (e) => {
             e.preventDefault();
@@ -175,7 +169,6 @@
         });
     });
 
-    // ---------- випадаюче меню ----------
     const dropdown = $('.dropdown');
     $('.dropdown > a').addEventListener('click', (e) => {
         e.preventDefault();
@@ -188,7 +181,6 @@
         a.addEventListener('click', () => { closeMenu(); dropdown.classList.remove('open'); });
     });
 
-    // ---------- фільтр категорій ----------
     let activeFilter = 'All';
     function applyFilter() {
         $$('#cards .card').forEach((card) => {
@@ -203,12 +195,10 @@
         });
     });
 
-    // ---------- ставки ----------
     function cardTitle(card) {
         return card.dataset.pid ? t('p_' + card.dataset.pid) : card.dataset.title;
     }
 
-    // делегування подій: працює і для карток, створених пізніше
     $('#cards').addEventListener('click', (e) => {
         const btn = e.target.closest('.bid-btn');
         if (!btn) { return; }
@@ -246,7 +236,6 @@
         toast(t('t_bid', { amount: money(amount), title: cardTitle(bidCard) }));
     });
 
-    // ---------- продаж товару ----------
     function openSell() {
         const form = $('#form-sell');
         form.reset();
@@ -317,7 +306,6 @@
         toast(t('t_sell', { title }));
     });
 
-    // ---------- форма контактів ----------
     $('#contact-form').addEventListener('submit', (e) => {
         e.preventDefault();
         const form = e.target;
@@ -330,8 +318,6 @@
         toast(t('t_sent'));
     });
 
-    // ---------- переклад інтерфейсу ----------
-    // оновлює текст, ціну та кількість ставок однієї картки
     function refreshCard(card) {
         $('.price', card).textContent = money(card.dataset.price);
         $('.card-title', card).textContent = cardTitle(card);
@@ -346,7 +332,7 @@
     function applyLang() {
         document.documentElement.lang = lang;
         $$('[data-i18n]').forEach((el) => { el.textContent = t(el.dataset.i18n); });
-        $$('[data-i18n-html]').forEach((el) => { el.innerHTML = t(el.dataset.i18nHtml); });   // лише наші власні тексти
+        $$('[data-i18n-html]').forEach((el) => { el.innerHTML = t(el.dataset.i18nHtml); }); // лише готові переклади.
         $$('[data-i18n-ph]').forEach((el) => { el.placeholder = t(el.dataset.i18nPh); });
         $$('.lang-btn').forEach((b) => b.classList.toggle('active', b.dataset.lang === lang));
         $$('#cards .card').forEach(refreshCard);
@@ -358,7 +344,6 @@
             $('#bid-title').textContent = cardTitle(bidCard);
             $('#bid-current').textContent = money(bidCard.dataset.price);
         }
-        // очищаємо повідомлення про помилки, щоб не лишалися іншою мовою
         $$('.form-error').forEach((p) => { p.textContent = ''; });
     }
 
@@ -369,6 +354,71 @@
             applyLang();
         });
     });
+
+    (function reviewsSlider() {
+        const track = $('#reviews-track');
+        const viewport = $('#reviews');
+        const dotsBox = $('#dots');
+        const slides = $$('.review', track);
+        const mobile = window.matchMedia('(max-width: 768px)');
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+        const DELAY = 5500;
+
+        let perView = 2;
+        let pages = 1;
+        let page = 0;
+        let timer = null;
+
+        function go(n) {
+            page = (n + pages) % pages;
+            track.style.transform = 'translateX(' + (-page * 100) + '%)';
+            $$('button', dotsBox).forEach((d, i) => {
+                d.classList.toggle('on', i === page);
+                d.setAttribute('aria-current', i === page ? 'true' : 'false');
+            });
+        }
+
+        function build() {
+            perView = mobile.matches ? 1 : 2;
+            pages = Math.ceil(slides.length / perView);
+            track.style.setProperty('--per', perView);
+            dotsBox.innerHTML = '';
+            for (let i = 0; i < pages; i++) {
+                const dot = document.createElement('button');
+                dot.type = 'button';
+                dot.setAttribute('aria-label', String(i + 1));
+                dot.addEventListener('click', () => { go(i); restart(); });
+                dotsBox.appendChild(dot);
+            }
+            go(Math.min(page, pages - 1));
+        }
+
+        function start() {
+            if (reduceMotion.matches) { return; }
+            stop();
+            timer = setInterval(() => go(page + 1), DELAY);
+        }
+        function stop() { clearInterval(timer); timer = null; }
+        function restart() { stop(); start(); }
+
+        viewport.addEventListener('mouseenter', stop);
+        viewport.addEventListener('mouseleave', start);
+        viewport.addEventListener('focusin', stop);
+        viewport.addEventListener('focusout', start);
+
+        let startX = null;
+        viewport.addEventListener('pointerdown', (e) => { startX = e.clientX; });
+        viewport.addEventListener('pointerup', (e) => {
+            if (startX === null) { return; }
+            const dx = e.clientX - startX;
+            startX = null;
+            if (Math.abs(dx) > 50) { go(page + (dx < 0 ? 1 : -1)); restart(); }
+        });
+
+        mobile.addEventListener('change', build);
+        build();
+        start();
+    })();
 
     applyLang();
 })();

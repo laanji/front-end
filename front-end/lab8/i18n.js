@@ -1,6 +1,6 @@
-// Тексти інтерфейсу українською та англійською
 const I18N = {
   "uk": {
+    "rev_demo": "Навчальний макет: відгуки вигадані, портрети — ілюстративні.",
     "nav_home": "Головна",
     "nav_buy": "Купити",
     "nav_sell": "Продати",
@@ -105,9 +105,22 @@ const I18N = {
     "p_5": "Планшет Apple iPad 10.2\"",
     "p_6": "Тарас Шевченко — Кобзар (подарункове видання)",
     "p_7": "Кавомашина De’Longhi Magnifica S",
-    "p_8": "Смарт-годинник Apple Watch SE"
+    "p_8": "Смарт-годинник Apple Watch SE",
+    "rev3_name": "Ірина Шевченко",
+    "rev3_role": "Маркетологиня",
+    "rev3_text": "Шукала подарунок колезі й знайшла класну річ за півціни. Ставки оновлюються миттєво, тож азарту вистачає!",
+    "rev4_name": "Максим Бондаренко",
+    "rev4_role": "Підприємець",
+    "rev4_text": "Виставляю лоти щотижня. Опублікувати товар — справа двох хвилин, а покупці з’являються майже одразу.",
+    "rev5_name": "Софія Ткаченко",
+    "rev5_role": "Фотографка",
+    "rev5_text": "Придбала тут вінтажний фотоапарат, про який давно мріяла. Продавець відповів одразу, а доставка була швидкою.",
+    "rev6_name": "Дмитро Лисенко",
+    "rev6_role": "Інженер",
+    "rev6_text": "Чесні правила й зрозумілий інтерфейс. Приємно, що сайт однаково зручний і на комп’ютері, і на телефоні."
   },
   "en": {
+    "rev_demo": "Student demo: testimonials are fictional; portraits are illustrative.",
     "nav_home": "Home",
     "nav_buy": "Buy",
     "nav_sell": "Sell",
@@ -212,6 +225,18 @@ const I18N = {
     "p_5": "Apple iPad 10.2\" Tablet",
     "p_6": "Taras Shevchenko — Kobzar (gift edition)",
     "p_7": "De’Longhi Magnifica S Coffee Machine",
-    "p_8": "Apple Watch SE Smartwatch"
+    "p_8": "Apple Watch SE Smartwatch",
+    "rev3_name": "Iryna Shevchenko",
+    "rev3_role": "Marketer",
+    "rev3_text": "I was looking for a gift for a colleague and found a great item at half price. Bids update instantly, so there is plenty of excitement!",
+    "rev4_name": "Maksym Bondarenko",
+    "rev4_role": "Entrepreneur",
+    "rev4_text": "I list items every week. Publishing a lot takes two minutes, and buyers show up almost immediately.",
+    "rev5_name": "Sofiia Tkachenko",
+    "rev5_role": "Photographer",
+    "rev5_text": "I bought a vintage camera I had been dreaming about. The seller replied right away and delivery was fast.",
+    "rev6_name": "Dmytro Lysenko",
+    "rev6_role": "Engineer",
+    "rev6_text": "Fair rules and a clear interface. It is nice that the site works equally well on a computer and on a phone."
   }
 };
